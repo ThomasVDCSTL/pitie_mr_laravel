@@ -19,15 +19,23 @@ Route::post('login',[UserAuthController::class,'login']);
 Route::post('logout',[UserAuthController::class,'logout'])
     ->middleware('auth:sanctum');
 
+
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('users', [UsersController::class, 'index']);
-    Route::get('users/{user}', [UsersController::class, 'show']);
     Route::put('users/{user}', [UsersController::class, 'update']);
     Route::delete('users/{user}', [UsersController::class, 'destroy']);
     Route::apiResource('artisans', ArtisanController::class);
-    Route::apiResource('products', ProductController::class);
+    Route::put('products', [ProductController::class, 'update']);
+    Route::post('products', [ProductController::class, 'store']);
+    Route::delete('products', [ProductController::class, 'destroy']);
     Route::apiResource('users', UsersController::class);
     Route::apiResource('panier', OrdersController::class);
     Route::post('add-to-cart', [OrdersController::class, 'addToCart']);
 
 });
+
+Route::get('products', [ProductController::class, 'index']);
+Route::get('products/{product}', [ProductController::class, 'show']);
+Route::get('users/{user}', [UsersController::class, 'show']);
+Route::get('artisans', [ArtisanController::class, 'index']);
+Route::get('artisans/{artisan}', [ArtisanController::class, 'show']);

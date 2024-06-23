@@ -20,7 +20,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return $user;
+        return $user->makeHidden(["password", "email", "phone_number", "adress", "created_at", "updated_at"]);
     }
 
     public function update(Request $request, User $user)

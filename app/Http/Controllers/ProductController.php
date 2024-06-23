@@ -11,6 +11,8 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      */
@@ -19,6 +21,14 @@ class ProductController extends Controller
     /**
      * renvoie la liste des produits
      * @return \Illuminate\Database\Eloquent\Collection
+     *
+     *
+     * @OA\GET(
+     *     path="/product",
+     *     summary="Returns the list of all products",
+     *     tags={"Products"},
+     * @OA\Response(response=200, description="All gud my friend"),
+     * @OA\Response(response=400, description="Not gud my friend"))
      */
     public function index()
     {
@@ -44,6 +54,7 @@ class ProductController extends Controller
 
     public function show(Product $produit)
     {
+
         return $produit;
     }
     /**
