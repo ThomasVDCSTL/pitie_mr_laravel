@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,5 +47,9 @@ class UserAuthController extends Controller
         return response()->json([
             "message"=>"logged out"
         ]);
+    }
+
+    public function getUser(Request $request) {
+        return response()->json($request->user());
     }
 }

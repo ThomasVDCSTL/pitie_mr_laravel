@@ -34,29 +34,37 @@ class ProductController extends Controller
     {
         return Product::all();
     }
+
+    public function indexByArtisan(string $artisan)
+    {
+        return Product::where('artisan_uuid', $artisan)->get();
+    }
+
+
     /**
      * enregistre un produit
      * @param StoreProductRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-
     public function store(StoreProductRequest $request)
     {
         $produit = Product::create($request->all());
 
         return response()->json($produit, 201);
     }
+
+
     /**
      * renvoie un produit
-     * @param Product $produit
+     * @param Product $product
      * @return Product
      */
-
-    public function show(Product $produit)
+    public function show(Product $product)
     {
-
-        return $produit;
+        return $product;
     }
+
+
     /**
      * met à jour un produit
      * @param UpdateProduitRequest $request

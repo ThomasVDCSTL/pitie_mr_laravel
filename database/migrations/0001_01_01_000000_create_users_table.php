@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->integer('phone_number')->nullable();
             $table->string('adress')->nullable();
+            $table->string('image')->default('https://static.vecteezy.com/system/resources/previews/009/314/126/original/default-avatar-profile-in-flat-design-free-png.png');
             $table->string('password');
             $table->boolean('artisan')->default(false);
             $table->rememberToken();

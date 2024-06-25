@@ -12,6 +12,11 @@ class UsersController extends Controller
         return User::all();
     }
 
+    public function indexArtisans()
+    {
+        return User::where('artisan', 1)->get();
+    }
+
     public function store(Request $request)
     {
         $user = User::create($request->all());
@@ -20,7 +25,7 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        return $user->makeHidden(["password", "email", "phone_number", "adress", "created_at", "updated_at"]);
+        return $user->makeHidden(["password", "created_at", "updated_at"]);
     }
 
     public function update(Request $request, User $user)
